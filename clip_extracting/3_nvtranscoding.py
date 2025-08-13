@@ -35,7 +35,9 @@ def process_one_video(video_filename, vstream_filename_format, clips):
                 encoder(frames)
                 file = encoder.finish()
 
-                with open(os.path.join(vstream_filename_format.format(s, e)), "wb") as f:
+                with open(
+                    os.path.join(vstream_filename_format.format(s, e)), "wb"
+                ) as f:
                     f.write(file)
                 del file
                 files.append(vstream_filename_format.format(s, e))
@@ -58,11 +60,25 @@ if __name__ == "__main__":
     parser.add_argument("--input_clip_dir", type=str)
     parser.add_argument("--input_video_dir", type=str)
     parser.add_argument("--output_dir", type=str)
-    parser.add_argument("--width", type=int, default=1280, help="Width of the output video.")
-    parser.add_argument("--height", type=int, default=720, help="Height of the output video.")
+    parser.add_argument(
+        "--width", type=int, default=1280, help="Width of the output video."
+    )
+    parser.add_argument(
+        "--height", type=int, default=720, help="Height of the output video."
+    )
     parser.add_argument("--fps", type=int, default=30, help="FPS of the output video.")
-    parser.add_argument("--batch_size", type=int, default=1, help="BS of the Decoder, set to 1 for transcodeing.")
-    parser.add_argument("--device_id", type=int, default=0, help="Specify the GPU ID if you have multiple GPUs.")
+    parser.add_argument(
+        "--batch_size",
+        type=int,
+        default=1,
+        help="BS of the Decoder, set to 1 for transcodeing.",
+    )
+    parser.add_argument(
+        "--device_id",
+        type=int,
+        default=0,
+        help="Specify the GPU ID if you have multiple GPUs.",
+    )
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO)
@@ -113,7 +129,7 @@ if __name__ == "__main__":
         os.makedirs(os.path.join(args.output_dir, vid), exist_ok=False)
 
         files = process_one_video(
-            os.path.join(args.input_video_dir, f"{vid}.mkv"),
+            os.path.join(args.input_video_dir, f"{vid}.mp4"),
             os.path.join(args.output_dir, vid, f"{vid}_{{:07d}}_{{:07d}}.hevc"),
             clips,
         )

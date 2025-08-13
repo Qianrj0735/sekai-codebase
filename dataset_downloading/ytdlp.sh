@@ -1,0 +1,1 @@
+yt-dlp -N 10 -f 299+bestaudio -a sekai-real-walking-hq_urls.txt -o "./videos/%(id)s.%(ext)s" --sleep-interval 2 --continue --verbose

@@ -1,1 +1,7 @@
 __pycache__
+dataset_downloading/videos/*
+*.npz
+*.txt
+*.hevc
+*.zip
+*.csv
