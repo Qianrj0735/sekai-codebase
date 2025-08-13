@@ -1,1 +1,1 @@
-yt-dlp -N 10 -f 299+bestaudio -a sekai-real-walking-hq_urls.txt -o "./videos/%(id)s.%(ext)s" --sleep-interval 2 --continue --verbose
+ python download_and_process.py --urls-file sekai-real-walking-hq_urls.txt --input-clip-dir /workspace/sekai-codebase/dataset_downloading/sekai-real-walking-hq_clip_txts --output-dir /workspace/sekai-codebase/dataset_downloading/sekai-real-walking-hq_vstreams --workers 1 --start-delay 20
